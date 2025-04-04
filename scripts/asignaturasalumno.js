@@ -7,7 +7,7 @@ document.getElementById("back_button").onclick = () => {window.location.href = "
 
 async function loadStudentInfo(){
     const student = await api.getStudentByCode(student_code);
-    console.log(student);
+    // console.log(student);
 
     details_container.querySelector('.student-photo').src = "https://w7.pngwing.com/pngs/335/197/png-transparent-computer-icons-google-account-user-email-miscellaneous-rim-area-thumbnail.png";
     details_container.querySelector('.student-phone').textContent = student.telefono;
@@ -22,16 +22,16 @@ async function loadStudentInfo(){
 }
 
 async function loadStudentTechnologies(){
-    const student_technologies = await api.getAsignaturasEstudiante(student_code);
+    const student_subjects = await api.getAsignaturasEstudiante(student_code);
     // console.log(student_technologies);
 
-    if(student_technologies.length == 0) return;
+    if(student_subjects.length == 0) return;
 
-    const tech_list = document.querySelector(".student-tech-list");
-    tech_list.innerHTML = "";
-    student_technologies.forEach(async (tech_item) => {
+    const subject_list = document.querySelector(".student-tech-list");
+    subject_list.innerHTML = "";
+    student_subjects.forEach(async (subject) => {
         // console.log(tech_item);
-        buildTechCard(tech_item.asignatura, tech_list);
+        subject_list.appendChild(await buildTechCard(subject.asignatura));
     });
 }
 
@@ -39,8 +39,8 @@ const tech_template = document.getElementById("tech_item_template");
 
 var total_creditos = 0;
 
-async function buildTechCard(asignatura, tech_list){
-    // console.log(asignatura);
+async function buildTechCard(asignatura){
+    console.log(asignatura);
     total_creditos += asignatura.creditos;
     const clone = tech_template.content.cloneNode(true);
 
@@ -48,10 +48,10 @@ async function buildTechCard(asignatura, tech_list){
     clone.querySelector('.tech-item-name').textContent = asignatura.nombre;
     clone.querySelector('.asignatura-codigo').textContent = asignatura.codigo;
     clone.querySelector('.tech-item-edit-button').textContent = ("Créditos: " + asignatura.creditos);
-    clone.querySelector('.tech-item-delete-button').onclick = deleteTechnology(asignatura);
+    clone.querySelector('.tech-item-delete-button').onclick = deleteSubject(asignatura);
     
     updateCredits();
-    tech_list.appendChild(clone);
+    return clone;
 }
 
 function updateCredits(){
@@ -62,11 +62,7 @@ function updateCredits(){
     }
 }
 
-async function editTechnology(tech){
-
-}
-
-async function deleteTechnology(tech){
+async function deleteSubject(tech){
 
 }
 
