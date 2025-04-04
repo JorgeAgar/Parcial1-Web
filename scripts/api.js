@@ -94,7 +94,7 @@ const api = {
   },
 
 
-  // Fetch all technologies
+  // Fetch all subjects
   async getAsignaturas() {
     try {
       const response = await fetch(`${API_URL}/asignatura?select=*`, {
@@ -102,12 +102,29 @@ const api = {
       });
       
       if (!response.ok) {
-        throw new Error('Failed to fetch technologies');
+        throw new Error('Failed to fetch subjects');
       }
       
       return await response.json();
     } catch (error) {
-      console.error('Error fetching technologies:', error);
+      console.error('Error fetching subjects:', error);
+      throw error;
+    }
+  },
+
+  async getMatriculas() {
+    try {
+      const response = await fetch(`${API_URL}/matricula?select=*`, {
+        headers: this.headers
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch enrolments');
+      }
+      
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching enrolments:', error);
       throw error;
     }
   },
@@ -151,65 +168,42 @@ const api = {
   },
 
 
-  // Add a technology to a student
-  async addStudentTechnology(studentTech) {
+  // Add a subject to a student
+  async addStudentSubject(studentSubject) {
     try {
-      const response = await fetch(`${API_URL}/student_technology`, {
+      const response = await fetch(`${API_URL}/matricula`, {
         method: 'POST',
         headers: this.headers,
-        body: JSON.stringify(studentTech)
+        body: JSON.stringify(studentSubject)
       });
       
       if (!response.ok) {
-        throw new Error('Failed to add technology to student');
+        throw new Error('Failed to add subject to student');
       }
       
       return await response.json();
     } catch (error) {
-      console.error('Error adding technology to student:', error);
+      console.error('Error adding subject to student:', error);
       throw error;
     }
   },
 
-
-  // Update a student's technology
-  async updateStudentTechnology(studentCode, technologyCode, level) {
+  // Add a subject to a student
+  async deleteStudentSubject(studentCode, subjectCode) {
     try {
-      const response = await fetch(
-        `${API_URL}/student_technology?student_code=eq.${studentCode}&technology_code=eq.${technologyCode}`, {
-        method: 'PATCH',
-        headers: this.headers,
-        body: JSON.stringify({ level })
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to update student technology');
-      }
-      
-      return await response.json();
-    } catch (error) {
-      console.error('Error updating student technology:', error);
-      throw error;
-    }
-  },
-
-
-  // Delete a student's technology
-  async deleteStudentTechnology(studentCode, technologyCode) {
-    try {
-      const response = await fetch(
-        `${API_URL}/student_technology?student_code=eq.${studentCode}&technology_code=eq.${technologyCode}`, {
+      const response = await fetch(`${API_URL}/matricula?codigo_alumno=eq.${studentCode}&codigo_asignatura=eq.${subjectCode}`, {
         method: 'DELETE',
-        headers: this.headers
+        headers: this.headers,
+        body: JSON.stringify(studentSubject)
       });
-      
+        
       if (!response.ok) {
-        throw new Error('Failed to delete student technology');
+        throw new Error('Failed to add subject to student');
       }
-      
-      return true;
+        
+      return await response.json();
     } catch (error) {
-      console.error('Error deleting student technology:', error);
+      console.error('Error adding subject to student:', error);
       throw error;
     }
   }
