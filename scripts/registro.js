@@ -11,12 +11,12 @@ document.getElementById("save_button").onclick = async (e) => {
     e.preventDefault();
 
     const student = {
-        code: form.code.value,
-        name: form.name.value,
+        codigo: form.code.value,
+        nombre: form.name.value,
         email: form.email.value,
-        photo: form.photo.value,
-        github_link: form.github.value,
-        description: form.description.value
+        telefono: form.phone.value,
+        direccion: form.direction.value,
+        fecha_nacimiento: form.birthdate.value
     };
 
     try {
