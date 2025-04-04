@@ -17,7 +17,7 @@ async function renderStudents(){
         }
 
         clone.querySelector('.edit').onclick = () => {
-            window.location.href = "html/editstudent.html?code=" + student.codigo;
+            window.location.href = "editaralumno.html?code=" + student.codigo;
         };
 
         clone.querySelector('.details').onclick = () => {
