@@ -47,13 +47,13 @@ var total_creditos = 0;
 async function buildTechCard(tech_item, tech_list){
     console.log(tech_item);
     const asignatura = await api.getMateria(tech_item.codigo_asignatura);
-    console.log(asignatura);
-    total_creditos += asignatura.creditos;
+    console.log(asignatura[0]);
+    total_creditos += asignatura[0].creditos;
     const clone = tech_template.content.cloneNode(true);
 
     clone.querySelector('.tech-item-logo').src = "https://images.vexels.com/content/157346/preview/flat-open-book-icon-14619c.png";
-    clone.querySelector('.tech-item-name').textContent = asignatura.nombre;
-    clone.querySelector('.asignatura-codigo').textContent = asignatura.codigo;
+    clone.querySelector('.tech-item-name').textContent = asignatura[0].nombre;
+    clone.querySelector('.asignatura-codigo').textContent = asignatura[0].codigo;
     clone.querySelector('.tech-item-edit-button').onclick = editTechnology(tech_item);
     clone.querySelector('.tech-item-delete-button').onclick = deleteTechnology(tech_item);
     
