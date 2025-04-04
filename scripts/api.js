@@ -1,5 +1,5 @@
 // API Configuration
-const API_URL = 'https://dvkvmjdefaytycdbsntd.supabase.co';
+const API_URL = 'https://dvkvmjdefaytycdbsntd.supabase.co/rest/v1';
 const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR2a3ZtamRlZmF5dHljZGJzbnRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM3MjE1MjAsImV4cCI6MjA1OTI5NzUyMH0.wYHbfTAJyIp2CLfU4LcIJfJAMrVq41zUK6kw5GZ01ts';
  
 // API Service
@@ -16,7 +16,7 @@ const api = {
   // Fetch all students
   async getStudents() {
     try {
-      const response = await fetch(`${API_URL}/student?select=*`, {
+      const response = await fetch(`${API_URL}/alumno?select=*`, {
         headers: this.headers
       });
       
@@ -35,7 +35,7 @@ const api = {
   // Fetch a single student by code
   async getStudentByCode(code) {
     try {
-      const response = await fetch(`${API_URL}/student?codigo=eq.${code}&select=*`, {
+      const response = await fetch(`${API_URL}/alumno?codigo=eq.${code}&select=*`, {
         headers: this.headers
       });
       
@@ -55,7 +55,7 @@ const api = {
   // Create a new student
   async createStudent(student) {
     try {
-      const response = await fetch(`${API_URL}/student`, {
+      const response = await fetch(`${API_URL}/alumno`, {
         method: 'POST',
         headers: this.headers,
         body: JSON.stringify(student)
@@ -76,7 +76,7 @@ const api = {
   // Update an existing student
   async updateStudent(code, student) {
     try {
-      const response = await fetch(`${API_URL}/student?codigo=eq.${code}`, {
+      const response = await fetch(`${API_URL}/alumno?codigo=eq.${code}`, {
         method: 'PATCH',
         headers: this.headers,
         body: JSON.stringify(student)
