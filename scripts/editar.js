@@ -11,7 +11,7 @@ document.getElementById("save_button").onclick = async (e) => {
     e.preventDefault();
 
     const student = {
-        codigo: form.code.value,
+        // codigo: form.code.value,
         nombre: form.name.value,
         email: form.email.value,
         telefono: form.phone.value,
