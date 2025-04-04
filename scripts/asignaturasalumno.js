@@ -36,7 +36,7 @@ async function loadStudentTechnologies(){
     tech_list.innerHTML = "";
     student_technologies.forEach(tech_item => {
         console.log(tech_item);
-        buildTechCard(tech_item. tech_list);
+        buildTechCard(tech_item, tech_list);
     });
 }
 
