@@ -1,0 +1,203 @@
+.main-container{
+    margin: auto;
+    margin-top: 2rem;
+    max-width: 1400px;
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", 'Segoe UI Symbol';
+}
+
+#back_button{
+    cursor: pointer;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    column-gap: 1rem;
+
+    font-weight: bold;
+    background-color: transparent;
+
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: .75rem;
+    border-style: none;
+
+    svg{
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+#back_button:hover{
+    background-color: hsl(220, 14%, 92%);
+}
+
+@media (max-width: 700px){
+    .form-items{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "code"
+        "name"
+        "email"
+        "github"
+        "photo"
+        "description";
+    }
+}
+
+@media (min-width: 700px){
+    .form-items{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        /* grid-template-areas: 
+            "code name"
+            "email github"
+            "photo photo"
+            "description description"; */
+    }
+}
+
+.form-container{
+    margin: auto;
+    max-width: 670px;
+    min-width: fit-content;
+
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: .75rem;
+
+    h1{
+        font-size: 1.5rem;
+        padding: 1.5rem;
+        margin: 0;
+    }
+
+    #student_form{
+        .form-items{
+            box-sizing: border-box;
+            padding: 1.5rem;
+            padding-top: 0;
+
+            display: grid;
+            gap: 1.5rem; 
+            justify-items: stretch;
+            align-items: stretch;
+            justify-content: stretch;
+
+            .form-item{
+
+                label{
+                    font-size: .875rem;
+                    font-weight: 500;
+                }
+
+                input{
+                    font-size: .875rem;
+                    line-height: 1.25rem;
+                    padding-inline: .75rem;
+                    padding-top: .5rem;
+                    padding-bottom: .5rem;
+
+                    border-width: 1px;
+                    border-color: hsl(220, 13%, 91%);
+                    border-radius: .75rem;
+                    border-style: solid;
+
+                    width: 100%;
+                    margin-top: .5rem;
+                    box-sizing: border-box;
+
+                    font-family: inherit;
+                }
+
+                textarea{
+                    margin-top: .5rem;
+                    width: 100%;
+                    min-height: 80px;
+                    box-sizing: border-box;
+                    padding-inline: .75rem;
+                    padding-top: .5rem;
+                    padding-bottom: .5rem;
+
+                    border-width: 1px;
+                    border-color: hsl(220, 13%, 91%);
+                    border-radius: .75rem;
+                    border-style: solid;
+
+                    font-size: .875rem;
+                    line-height: 1.25rem;
+                    font-family: inherit;
+                }
+            }
+
+            .code-box{
+                /* grid-area: code; */
+
+                .code-restriction-text{
+                    font-size: .75rem;
+                    margin-top: .5rem;
+                    color: gray;
+                }
+            }
+
+            /* .name-box{
+                grid-area: name;
+            }
+
+            .email-box{
+                grid-area: email;
+            }
+
+            .description-box{
+                grid-area: description;
+            } */
+        }
+        
+        .form-buttons{
+            padding: 1.5rem;
+            padding-top: 0;
+
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: right;
+            column-gap: 1rem;
+        }
+
+        .button{
+            font-weight: bold;
+            font-size: .875rem;
+
+            padding-inline: 1rem;
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+            line-height: 1.25rem;
+
+            border-radius: .75rem;
+
+            cursor: pointer;
+        }
+
+        #cancel_button{
+            border-style: solid;
+            border-width: 1px;
+            border-color: lightgray;
+            color: black;
+            background-color: transparent;
+        }
+
+        #cancel_button:hover{
+            background-color: hsl(220, 14%, 92%);
+        }
+
+        #save_button{
+            color: white;
+            background-color: hsl(220, 13%, 28%);
+            border-style: hidden;
+        }
+
+        #save_button:hover{
+            background-color: hsl(220, 13%, 28%, .9);
+        }
+    }
+}
