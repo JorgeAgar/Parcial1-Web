@@ -139,12 +139,12 @@ const api = {
       });
       
       if (!response.ok) {
-        throw new Error('Failed to fetch student technologies');
+        throw new Error('Failed to fetch student subjects');
       }
       
       return await response.json();
     } catch (error) {
-      console.error(`Error fetching technologies for student ${studentCode}:`, error);
+      console.error(`Error fetching subjects for student ${studentCode}:`, error);
       throw error;
     }
   },
@@ -193,8 +193,8 @@ const api = {
     try {
       const response = await fetch(`${API_URL}/matricula?codigo_alumno=eq.${studentCode}&codigo_asignatura=eq.${subjectCode}`, {
         method: 'DELETE',
-        headers: this.headers,
-        body: JSON.stringify(studentSubject)
+        headers: this.headers
+        // body: JSON.stringify(studentSubject)
       });
         
       if (!response.ok) {
@@ -203,7 +203,7 @@ const api = {
         
       return await response.json();
     } catch (error) {
-      console.error('Error adding subject to student:', error);
+      console.error('Error deleting subject from student:', error);
       throw error;
     }
   }

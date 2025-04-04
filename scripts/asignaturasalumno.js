@@ -23,7 +23,10 @@ async function loadStudentInfo(){
     };
 }
 
+var total_creditos = 0;
+
 async function loadStudentSubjects(){
+    total_creditos = 0;
     const student_subjects = await api.getAsignaturasEstudiante(student_code);
     // console.log(student_technologies);
 
@@ -39,10 +42,8 @@ async function loadStudentSubjects(){
 
 const tech_template = document.getElementById("tech_item_template");
 
-var total_creditos = 0;
-
 async function buildTechCard(asignatura){
-    console.log(asignatura);
+    // console.log(asignatura);
     total_creditos += asignatura.creditos;
     const clone = tech_template.content.cloneNode(true);
 
@@ -50,7 +51,9 @@ async function buildTechCard(asignatura){
     clone.querySelector('.tech-item-name').textContent = asignatura.nombre;
     clone.querySelector('.asignatura-codigo').textContent = asignatura.codigo;
     clone.querySelector('.tech-item-edit-button').textContent = ("Créditos: " + asignatura.creditos);
-    clone.querySelector('.tech-item-delete-button').onclick = deleteSubject(asignatura);
+    clone.querySelector('.tech-item-delete-button').onclick = async () => {
+        deleteSubject(asignatura);
+    };
     
     updateCredits();
     return clone;
@@ -64,8 +67,15 @@ function updateCredits(){
     }
 }
 
-async function deleteSubject(tech){
-
+async function deleteSubject(subject){
+    try {
+        let response = await api.deleteStudentSubject(student_code, subject.codigo);
+        console.log(response);
+        await loadStudentSubjects();
+    } catch (error) {
+        console.log(error);
+        alert("Ocurrió un error");
+    }
 }
 
 async function addSubject() {
