@@ -34,7 +34,7 @@ const api = {
   // Fetch a single student by code
   async getStudentByCode(code) {
     try {
-      const response = await fetch(`${API_URL}/student?code=eq.${code}&select=*`, {
+      const response = await fetch(`${API_URL}/student?codigo=eq.${code}&select=*`, {
         headers: this.headers
       });
       
@@ -75,7 +75,7 @@ const api = {
   // Update an existing student
   async updateStudent(code, student) {
     try {
-      const response = await fetch(`${API_URL}/student?code=eq.${code}`, {
+      const response = await fetch(`${API_URL}/student?codigo=eq.${code}`, {
         method: 'PATCH',
         headers: this.headers,
         body: JSON.stringify(student)
