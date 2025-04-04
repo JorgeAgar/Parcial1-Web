@@ -36,14 +36,17 @@ async function loadStudentTechnologies(){
     tech_list.innerHTML = "";
     student_technologies.forEach(tech_item => {
         console.log(tech_item);
-        tech_list.appendChild(buildTechCard(tech_item));
+        buildTechCard(tech_item);
     });
 }
 
 const tech_template = document.getElementById("tech_item_template");
 
-function buildTechCard(tech_item){
+async function buildTechCard(tech_item, tech_list){
+    const asignatura = await api.getMateria(tech_item.codigo_asignatura);
+    console.log(asignatura);
     const clone = tech_template.content.cloneNode(true);
+
     clone.querySelector('.tech-item-logo').src = "https://images.vexels.com/content/157346/preview/flat-open-book-icon-14619c.png";
     clone.querySelector('.tech-item-name').textContent = tech_item.technology.name;
     for(let i = 0; i < tech_item.level; i++){
@@ -51,7 +54,8 @@ function buildTechCard(tech_item){
     }
     clone.querySelector('.tech-item-edit-button').onclick = editTechnology(tech_item);
     clone.querySelector('.tech-item-delete-button').onclick = deleteTechnology(tech_item);
-    return clone;
+    
+    tech_list.appendChild(clone);
 }
 
 async function editTechnology(tech){

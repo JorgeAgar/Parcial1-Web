@@ -132,6 +132,24 @@ const api = {
     }
   },
 
+  async getMateria(codMateria){
+    try {
+        const response = await fetch(
+          `${API_URL}/asignatura?codigo=eq.${codMateria}`, {
+          headers: this.headers
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch student technologies');
+        }
+        
+        return await response.json();
+      } catch (error) {
+        console.error(`Error trayendo la materia ${codMateria}:`, error);
+        throw error;
+      }
+  },
+
 
   // Add a technology to a student
   async addStudentTechnology(studentTech) {
