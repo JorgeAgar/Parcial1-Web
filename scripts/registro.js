@@ -20,10 +20,7 @@ document.getElementById("save_button").onclick = async (e) => {
     };
 
     try {
-        // console.log(student);
         let response = await api.createStudent(student);
-        // console.log(response);
-        alert(response);
         goBack();
     } catch (error) {
         console.log(error);

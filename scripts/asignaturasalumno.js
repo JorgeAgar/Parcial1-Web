@@ -23,7 +23,7 @@ async function loadStudentInfo(){
     };
 }
 
-async function loadStudentTechnologies(){
+async function loadStudentSubjects(){
     const student_subjects = await api.getAsignaturasEstudiante(student_code);
     // console.log(student_technologies);
 
@@ -90,27 +90,50 @@ async function addSubject() {
     });
 
     let container = clone.querySelector('.add-subject-info');
+    //first time
+    var selectedSubjectCode = selectSubject.selectedOptions[0].value;
+    updateSubjectInfoAdd(subjInfo.get(selectedSubjectCode), container);
+    //after each input selection
     selectSubject.addEventListener("input", () => {
-        let key = selectSubject.selectedOptions[0].value;
-        updateSubjectInfoAdd(subjInfo.get(key), container);
+        selectedSubjectCode = selectSubject.selectedOptions[0].value;
+        updateSubjectInfoAdd(subjInfo.get(selectedSubjectCode), container);
     });
 
     clone.querySelector('.add-subject-cancel').onclick = () => {
         document.body.removeChild(document.querySelector('.add-subject-container'));
     };
 
+    clone.querySelector('.add-subject-enroll').onclick = async () => {
+        enrolSubject(selectedSubjectCode);
+    };
+
     document.body.appendChild(clone);
 }
 
 function updateSubjectInfoAdd(subject, infoContainer){
-    console.log(infoContainer);
-    console.log(subject);
     infoContainer.querySelector('.add-subject-credits').textContent = ("Créditos: " + subject.credits);
     infoContainer.querySelector('.add-subject-description').textContent = subject.description;
 }
 
+async function enrolSubject(subjectCode){
+    const enrolment = {
+        codigo_alumno: student_code,
+        codigo_asignatura: subjectCode
+    };
+
+    try {
+        let response = await api.addStudentSubject(enrolment);
+        console.log(response);
+        document.body.removeChild(document.querySelector('.add-subject-container'));
+        await loadStudentSubjects();
+    } catch (error) {
+        console.log(error);
+        alert("Ocurrió un error");
+    }
+}
+
 loadStudentInfo();
-loadStudentTechnologies();
+loadStudentSubjects();
 
 function getQueryParam(url, param){
     const urlObj = new URL(url);
