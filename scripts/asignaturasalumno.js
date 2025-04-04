@@ -69,20 +69,30 @@ async function deleteSubject(tech){
 }
 
 async function addSubject() {
-    console.log("añadiendo asignatura");
-
     const remCreds = (14 - total_creditos);
     const clone = add_subject_template.content.cloneNode(true);
     const selectSubject = clone.querySelector('#add_subject_selection');
 
     const subjects = await api.getAsignaturas();
+    let subjInfo = new Map();
     subjects.forEach(subject => {
         if(subject.creditos <= remCreds){
             const option = document.createElement('option');
             option.value = subject.codigo;
             option.textContent = subject.nombre;
             selectSubject.appendChild(option);
+            const subjectInfo = {
+                description: subject.descripcion,
+                credits: subject.creditos
+            };
+            subjInfo.set(subject.codigo, subjectInfo);
         }
+    });
+
+    let container = clone.querySelector('.add-subject-info');
+    selectSubject.addEventListener("input", () => {
+        let key = selectSubject.selectedOptions[0].value;
+        updateSubjectInfoAdd(subjInfo.get(key), container);
     });
 
     clone.querySelector('.add-subject-cancel').onclick = () => {
@@ -90,6 +100,13 @@ async function addSubject() {
     };
 
     document.body.appendChild(clone);
+}
+
+function updateSubjectInfoAdd(subject, infoContainer){
+    console.log(infoContainer);
+    console.log(subject);
+    infoContainer.querySelector('.add-subject-credits').textContent = ("Créditos: " + subject.credits);
+    infoContainer.querySelector('.add-subject-description').textContent = subject.description;
 }
 
 loadStudentInfo();
