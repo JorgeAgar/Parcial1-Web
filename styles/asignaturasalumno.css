@@ -1,0 +1,414 @@
+.main-container{
+    margin: auto;
+    margin-top: 2rem;
+    max-width: 1400px;
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", 'Segoe UI Symbol';
+}
+
+#back_button{
+    font-weight: bold;
+    background-color: transparent;
+
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: .75rem;
+    border-style: none;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    column-gap: 1rem;
+
+    svg{
+        width: 1rem;
+        height: 1rem;
+    }
+    cursor: pointer;
+}
+
+#back_button:hover{
+    background-color: hsl(220, 14%, 92%);
+}
+
+#details-container{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    gap: 1.5rem;
+}
+
+.student-info{
+    border-width: 1px;
+    border-radius: .75rem;
+    border-style: solid;
+    border-color: hsl(220, 13%, 91%);
+    padding: 1.5rem;
+    width: 33%;
+
+    .student-info-label{
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .student-info-top{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .student-photo{
+            margin: 0;
+            margin-bottom: 1rem;
+            width: 6rem;
+            height: 6rem;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        .student-namecode{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            .student-name{
+                margin: 0;
+                margin-bottom: .25rem;
+            }
+
+            .student-code{
+                font-weight: bold;
+                font-size: .75rem;
+                line-height: 1rem;
+                padding: .125rem .625rem;
+                border-radius: 999px;
+                border-color: hsl(220, 13%, 91%);
+                border-width: 1px;
+                border-style: solid;
+            }
+        }
+
+        .student-emailgithub{
+            align-self: flex-start;
+
+            .student-label{
+                vertical-align: middle;
+                color: hsl(220, 9%, 46%);
+                font-size: .875rem;
+                line-height: 1.25rem;
+
+                svg{
+                    margin-right: .5rem;
+                    vertical-align: middle;
+                    width: 1rem;
+                    height: 1rem;
+                }
+            }
+
+            .student-container{
+                vertical-align: middle;
+                margin-bottom: 1rem;
+            }
+
+            .student-info-item{
+                vertical-align: middle;
+                margin-left: .5rem;
+                color: black;
+                font-weight: 500;
+                font-size: .875rem;
+                line-height: 1.25rem;
+            }
+
+        }
+    }
+
+    .student-info-divline{
+        width: 100%;
+        height: 1px;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        background-color: hsl(220, 13%, 91%);
+    }
+
+    .student-info-footer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1.5rem;
+
+        .student-about{
+            .student-about-label{
+                font-weight: 500;
+                font-size: .875rem;
+                line-height: 1.25rem;
+                margin: 0;
+                margin-bottom: .5rem;
+            }
+
+            .student-description{
+                color: hsl(220, 9%, 46%);
+                font-weight: normal;
+                font-size: .875rem;
+                line-height: 1.25rem;
+            }
+        }
+
+        .edit-button{
+            font-weight: 600;
+            font-size: .875rem;
+            line-height: 1.25rem;
+            padding: .5rem 1rem;
+
+            border-radius: .75rem;
+            border-style: solid;
+            border-width: 1px;
+            border-color: hsl(220, 13%, 91%);
+
+            background-color: white;
+            width: fit-content;
+
+            cursor: pointer;
+
+            svg{
+                margin-right: 1rem;
+                vertical-align: middle;
+                width: 1rem;
+                height: 1rem;
+            }
+        }
+
+        .edit-button:hover{
+            background-color: hsl(220, 14%, 92%);
+        }
+    }
+}
+
+.student-technologies{
+    border-width: 1px;
+    border-radius: .75rem;
+    border-color: hsl(220, 13%, 91%);
+    border-style: solid;
+    flex-basis: 65%;
+
+    .student-tech-header{
+        padding: 1.5rem;
+        padding-bottom: 1rem;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        .student-tech-label{
+            h2{
+                margin: 0;
+                font-size: 1.5rem;
+            }
+            p{
+                margin: 0;
+                color: hsl(220, 9%, 46%);
+                font-size: .875rem;
+                line-height: 1.25rem;
+            }
+        }
+
+        #add_tech_button{
+            background-color: hsl(220, 13%, 28%);
+            color: white;
+            font-weight: bold;
+            font-size: .875rem;
+            line-height: 1.25rem;
+            padding-inline: .75rem;
+            text-wrap-mode: nowrap;
+
+            border-radius: .75rem;
+            border-style: hidden;
+
+            height: 2.25rem;
+            vertical-align: middle;
+
+            svg{
+                width: 1rem;
+                height: 1rem;
+                margin-right: 1rem;
+                vertical-align: middle;
+            }
+            cursor: pointer;
+        }
+
+        .disabled{
+            opacity: 0.5;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        #add_tech_button:hover{
+            background-color: hsl(220, 13%, 28%, .9);
+        }
+    }
+
+    .student-tech-list{
+        padding: 1.5rem;
+        padding-top: 0;
+
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+        align-items: stretch;
+    }
+}
+
+.student-notech-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    margin-top: 20%;
+
+    h3{
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        margin: 0;
+        margin-bottom: .5rem;
+    }
+
+    p{
+        color: hsl(220, 9%, 46%);
+        margin: 0;
+        margin-bottom: 1rem;
+    }
+
+    #add_first_tech_button{
+        font-weight: bold;
+        font-size: .875rem;
+        line-height: 1.25rem;
+        padding: .5rem 1rem;
+        background-color: hsl(220, 13%, 28%);
+        color: white;
+
+        border-radius: .75rem;
+        border-style: hidden;
+
+        vertical-align: middle;
+
+        svg{
+            vertical-align: middle;
+            margin-right: 1rem;
+            width: 1rem;
+            height: 1rem;
+        }
+        cursor: pointer;
+    }
+
+    #add_first_tech_button:hover{
+        background-color: hsl(220, 13%, 28%, .9);
+    }
+}
+
+.tech-item-container{
+    padding: 1rem;
+    border-radius: .75rem;
+    border-style: hidden;
+    background-color: hsl(220, 14%, 96%);
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .tech-item-info{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: .75rem;
+        align-items: center;
+
+        .tech-item-logo{
+            object-fit: contain;
+            border-radius: .25rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            margin: 0;
+        }
+
+        .tech-item-namerating{
+            display: flex;
+            flex-direction: column;
+            gap: .25rem;
+            align-items: flex-start;
+
+            .tech-item-name{
+                margin: 0;
+                font-size: 1.25rem;
+                line-height: 1.75rem;
+                font-weight: 500;
+            }
+
+            .tech-item-rating{
+                .tech-star{
+                    width: 1rem;
+                    height: 1rem;
+                    color: hsl(220, 9%, 46%);
+                }
+            
+                .ticked-star{
+                    color: rgb(234, 179, 8);
+                    fill: rgb(234, 179, 8);
+                }
+            }
+        }
+
+    }
+
+    .tech-item-buttons{
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: flex-end;
+        align-items: center;
+
+        button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 2rem;
+            height: 2rem;
+
+            background-color: transparent;
+            margin: 0;
+            border-style: hidden;
+            border-radius: .75rem;
+
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: hsl(220, 14%, 92%);
+        }
+
+        .tech-item-edit-button{
+            svg{
+                width: 1rem;
+                height: 1rem;
+                color: hsl(222, 84%, 5%);
+            }
+        }
+
+        .tech-item-delete-button{
+            svg{
+                width: 1rem;
+                height: 1rem;
+                color: red;
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    #details-container{
+        flex-flow: column;
+
+        .student-info{
+            width: fit-content;
+        }
+    }
+}
