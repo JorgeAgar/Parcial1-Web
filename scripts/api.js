@@ -95,7 +95,7 @@ const api = {
 
 
   // Fetch all technologies
-  async getTechnologies() {
+  async getAsignaturas() {
     try {
       const response = await fetch(`${API_URL}/asignatura?select=*`, {
         headers: this.headers
@@ -114,10 +114,10 @@ const api = {
 
 
   // Fetch technologies for a specific student
-  async getStudentTechnologies(studentCode) {
+  async getAsignaturasEstudiante(studentCode) {
     try {
       const response = await fetch(
-        `${API_URL}/matricula?codigo_alumno=eq.${studentCode}`, {
+        `${API_URL}/matricula?codigo_alumno=eq.${studentCode}&select=asignatura(*)`, {
         headers: this.headers
       });
       

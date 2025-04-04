@@ -22,21 +22,16 @@ async function loadStudentInfo(){
 }
 
 async function loadStudentTechnologies(){
-    const student_technologies = await api.getStudentTechnologies(student_code);
+    const student_technologies = await api.getAsignaturasEstudiante(student_code);
     // console.log(student_technologies);
 
     if(student_technologies.length == 0) return;
 
-    // if(student_technologies.length == 5){
-    //     add_tech_button.classList.add("disabled");
-    //     add_tech_button.disabled = true;
-    // }
-
     const tech_list = document.querySelector(".student-tech-list");
     tech_list.innerHTML = "";
-    student_technologies.forEach(tech_item => {
-        console.log(tech_item);
-        buildTechCard(tech_item, tech_list);
+    student_technologies.forEach(async (tech_item) => {
+        // console.log(tech_item);
+        buildTechCard(tech_item.asignatura, tech_list);
     });
 }
 
@@ -44,22 +39,27 @@ const tech_template = document.getElementById("tech_item_template");
 
 var total_creditos = 0;
 
-async function buildTechCard(tech_item, tech_list){
-    console.log(tech_item);
-    const asignatura = await api.getMateria(tech_item.codigo_asignatura);
-    console.log(asignatura[0]);
-    total_creditos += asignatura[0].creditos;
+async function buildTechCard(asignatura, tech_list){
+    // console.log(asignatura);
+    total_creditos += asignatura.creditos;
     const clone = tech_template.content.cloneNode(true);
 
     clone.querySelector('.tech-item-logo').src = "https://images.vexels.com/content/157346/preview/flat-open-book-icon-14619c.png";
-    clone.querySelector('.tech-item-name').textContent = asignatura[0].nombre;
-    clone.querySelector('.asignatura-codigo').textContent = asignatura[0].codigo;
-    clone.querySelector('.tech-item-edit-button').textContent = ("Créditos: " + asignatura[0].creditos);
-    clone.querySelector('.tech-item-delete-button').onclick = deleteTechnology(tech_item);
+    clone.querySelector('.tech-item-name').textContent = asignatura.nombre;
+    clone.querySelector('.asignatura-codigo').textContent = asignatura.codigo;
+    clone.querySelector('.tech-item-edit-button').textContent = ("Créditos: " + asignatura.creditos);
+    clone.querySelector('.tech-item-delete-button').onclick = deleteTechnology(asignatura);
     
+    updateCredits();
     tech_list.appendChild(clone);
+}
 
+function updateCredits(){
     document.getElementById("total-credits").textContent = ("Total créditos " + total_creditos);
+    if(total_creditos >= 14){
+        add_tech_button.classList.add("disabled");
+        add_tech_button.disabled = true;
+    }
 }
 
 async function editTechnology(tech){
