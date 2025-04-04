@@ -404,7 +404,8 @@
         flex-flow: column;
 
         .student-info{
-            width: fit-content;
+            width: 100%;
+            box-sizing: border-box;
         }
     }
 }
