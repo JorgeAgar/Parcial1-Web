@@ -72,6 +72,24 @@ const api = {
     }
   },
 
+  async deleteStudent(studentCode) {
+    try {
+      const response = await fetch(`${API_URL}/alumno?codigo=eq.${studentCode}`, {
+        method: 'DELETE',
+        headers: this.headers
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to delete student');
+      }
+      
+      return await response.json();
+    } catch (error) {
+      console.error('Error deleting student:', error);
+      throw error;
+    }
+  },
+
 
   // Update an existing student
   async updateStudent(code, student) {

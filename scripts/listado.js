@@ -12,7 +12,7 @@ async function renderStudents(){
         clone.querySelector('.student-code').innerHTML = student.codigo;
         clone.querySelector('.student-image').src = "https://w7.pngwing.com/pngs/335/197/png-transparent-computer-icons-google-account-user-email-miscellaneous-rim-area-thumbnail.png";
         clone.querySelector('.student-phone').textContent = student.telefono;
-        if(student.email.trim().length != 0){
+        if(student.email != null && student.email.trim().length != 0){
             clone.querySelector('.student-email').textContent = student.email;
         }
 
