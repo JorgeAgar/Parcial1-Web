@@ -1,8 +1,10 @@
 const student_code = getQueryParam(window.location.href, "code");
 const details_container = document.getElementById("details-container");
 
+const add_subject_template = document.getElementById("add_subject_template");
 const add_tech_button = document.getElementById("add_tech_button");
-add_tech_button.onclick = addTechnology();
+add_tech_button.onclick = addSubject;
+document.getElementById("add_first_tech_button").onclick = addSubject;
 document.getElementById("back_button").onclick = () => {window.location.href = "listado.html";};
 
 async function loadStudentInfo(){
@@ -66,8 +68,28 @@ async function deleteSubject(tech){
 
 }
 
-async function addTechnology() {
-    
+async function addSubject() {
+    console.log("añadiendo asignatura");
+
+    const remCreds = (14 - total_creditos);
+    const clone = add_subject_template.content.cloneNode(true);
+    const selectSubject = clone.querySelector('#add_subject_selection');
+
+    const subjects = await api.getAsignaturas();
+    subjects.forEach(subject => {
+        if(subject.creditos <= remCreds){
+            const option = document.createElement('option');
+            option.value = subject.codigo;
+            option.textContent = subject.nombre;
+            selectSubject.appendChild(option);
+        }
+    });
+
+    clone.querySelector('.add-subject-cancel').onclick = () => {
+        document.body.removeChild(document.querySelector('.add-subject-container'));
+    };
+
+    document.body.appendChild(clone);
 }
 
 loadStudentInfo();

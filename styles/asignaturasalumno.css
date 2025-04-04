@@ -1,8 +1,11 @@
+body{
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", 'Segoe UI Symbol';
+}
+
 .main-container{
     margin: auto;
     margin-top: 2rem;
     max-width: 1400px;
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", 'Segoe UI Symbol';
 }
 
 #back_button{
@@ -430,6 +433,7 @@
 
     border-radius: .75rem;
     background-color: white;
+    padding: .5rem;
 
     display: flex;
     flex-direction: column;
@@ -440,6 +444,8 @@
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
+
+        margin-bottom: .5rem;
 
         .add-subject-title{
             margin: 0;
@@ -452,6 +458,8 @@
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
+
+        margin: .5rem;
     }
 
     .add-subject-info{
@@ -475,11 +483,13 @@
         flex-flow: row nowrap;
         justify-content: flex-end;
         align-items: center;
+        gap: 1rem;
 
         button{
             cursor: pointer;
             padding: .5rem;
             border-radius: .75rem;
+            font-weight: bold;
         }
 
         .add-subject-cancel{
@@ -487,7 +497,7 @@
             color: black;
             border-style: solid;
             border-width: 1px;
-            border-color: black;
+            border-color: lightgray;
         }
 
         .add-subject-cancel:hover{
@@ -497,9 +507,10 @@
         .add-subject-enroll{
             background-color: black;
             color: white;
+            border-style: hidden;
         }
 
-        .add-subject-enroll{
+        .add-subject-enroll:hover{
             background-color: rgb(35, 35, 35);
         }
     }
