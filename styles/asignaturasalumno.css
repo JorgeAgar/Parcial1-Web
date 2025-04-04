@@ -100,7 +100,7 @@ body{
                 font-size: .875rem;
                 line-height: 1.25rem;
 
-                svg{
+                img, svg{
                     margin-right: .5rem;
                     vertical-align: middle;
                     width: 1rem;
