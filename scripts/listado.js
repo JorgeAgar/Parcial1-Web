@@ -21,7 +21,7 @@ async function renderStudents(){
         };
 
         clone.querySelector('.details').onclick = () => {
-            window.location.href = "html/details.html?code=" + student.codigo;
+            window.location.href = "asignaturasalumno.html?code=" + student.codigo;
         };
 
         studentsContainer.appendChild(clone);

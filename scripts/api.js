@@ -97,7 +97,7 @@ const api = {
   // Fetch all technologies
   async getTechnologies() {
     try {
-      const response = await fetch(`${API_URL}/technology?select=*`, {
+      const response = await fetch(`${API_URL}/asignatura?select=*`, {
         headers: this.headers
       });
       
@@ -117,7 +117,7 @@ const api = {
   async getStudentTechnologies(studentCode) {
     try {
       const response = await fetch(
-        `${API_URL}/student_technology?student_code=eq.${studentCode}&select=*,technology:technology_code(*)`, {
+        `${API_URL}/matricula?codigo_alumno=eq.${studentCode}`, {
         headers: this.headers
       });
       
