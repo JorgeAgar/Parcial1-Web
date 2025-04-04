@@ -380,6 +380,7 @@
         }
 
         .tech-item-edit-button{
+            cursor: default;
             background-color: hsl(220, 14%, 82%);
             width: fit-content;
             font-family: inherit;
