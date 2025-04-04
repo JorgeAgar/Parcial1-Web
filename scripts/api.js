@@ -8,7 +8,8 @@ const api = {
   headers: {
     'apikey': API_KEY,
     'Content-Type': 'application/json',
-    'Prefer': 'return=representation'
+    'Prefer': 'return=representation',
+    'Access-Control-Allow-Origin': '*'
   },
 
   

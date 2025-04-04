@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Sistema de Matrículas</title>
+        <link rel="stylesheet" href="../styles/addeditstudent.css">
+    </head>
+
+    <body>
+        <div class="main-container">
+            <button id="back_button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="m12 19-7-7 7-7"></path>
+                    <path d="M19 12H5"></path>
+                </svg>
+                Back
+            </button>
+            <div class="form-container">
+                <h1>Add New Student</h1>
+                <form action="#" id="student_form">
+                    <div class="form-items">
+                        <div class="form-item code-box">
+                            <label for="code">Código</label>
+                            <input type="text" id="code" name="code" required placeholder="e.g., S001">
+                        </div>
+                        <div class="form-item name-box">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-item email-box">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
+                        </div>
+                        <div class="form-item phone-box">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" placeholder="000000000" required>
+                        </div>
+                        <div class="form-item direction-box">
+                            <label for="direction">Dirección</label>
+                            <input type="text" id="direction" name="direction" placeholder="Av 69, calle perdi, #420" required>
+                        </div>
+                        <div class="form-item birthdate-box">
+                            <label for="birthdate">Fecha de Nacimiento</label>
+                            <input type="date" id="birthdate" name="birthdate" required>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button id="cancel_button" class="button">Cancelar</button>
+                        <button id="save_button" type="submit" class="button">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="../scripts/api.js"></script>
+        <script type="text/javascript" src="../scripts/addstudent.js"></script>
+    </body>
+</html>
