@@ -54,7 +54,7 @@ async function buildTechCard(tech_item, tech_list){
     clone.querySelector('.tech-item-logo').src = "https://images.vexels.com/content/157346/preview/flat-open-book-icon-14619c.png";
     clone.querySelector('.tech-item-name').textContent = asignatura[0].nombre;
     clone.querySelector('.asignatura-codigo').textContent = asignatura[0].codigo;
-    clone.querySelector('.tech-item-edit-button').onclick = editTechnology(tech_item);
+    clone.querySelector('.tech-item-edit-button').textContent = ("Créditos: " + asignatura[0].creditos);
     clone.querySelector('.tech-item-delete-button').onclick = deleteTechnology(tech_item);
     
     tech_list.appendChild(clone);
